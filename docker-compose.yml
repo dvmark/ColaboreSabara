@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: colabore_database
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: colabore_sabara
+      MYSQL_USER: colabore
+      MYSQL_PASSWORD: colabore123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - colabore_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: colabore_web
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USER: colabore
+      DB_PASSWORD: colabore123
+      DB_NAME: colabore_sabara
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - colabore_network
+
+volumes:
+  db_data:
+
+networks:
+  colabore_network:
+    driver: bridge
