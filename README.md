@@ -9,8 +9,6 @@ Table
 - Pré-requisitos
 - Como Executar com Docker
 - Configuração do Banco de Dados MySQL
-- Configuração de Variáveis no PHP
-- Contato
 
 
 Introdução
@@ -33,30 +31,8 @@ Tecnologias Utilizadas
 
 
 Estrutura do Projeto
--------------------------------
-/
-├── uploads/
-│   └── fotos/
-├── cadastro.php
-├── conexao.php
-├── config.php
-├── dashboard.php
-├── debug.php
-├── footer.php
-├── header.php
-├── index.php
-├── cs.sql
-├── logout.php
-├── minhasocorrencias.php
-├── ocorrencias.php
-├── perfil.php
-├── sidebar.php
-├── upvote.php
-├── style.css
-├── CSLOGO.png
-├── docker-compose.yml
-├── Dockerfile
-└── README.md
+<img width="293" height="629" alt="{C970D19B-8A69-440E-8CF0-0A22A1EEC7B7}" src="https://github.com/user-attachments/assets/a88a3c31-380f-42cd-8fbb-a184da3d4a09" />
+
 
 
 Pré-requisitos
@@ -89,44 +65,4 @@ Isso irá:
 Para resetar o banco:
 
     docker compose down -v
-
-
-Configuração do Banco de Dados MySQL
--------------------------------
-Variáveis definidas no docker-compose.yml:
-
-MYSQL_ROOT_PASSWORD = root123  
-MYSQL_DATABASE      = colabore_sabara  
-MYSQL_USER          = colabore  
-MYSQL_PASSWORD      = colabore123  
-Porta externa       = 3307
-
-O arquivo cs.sql será carregado automaticamente ao iniciar pela primeira vez.
-
-
-Configuração de Variáveis no PHP
--------------------------------
-As variáveis são enviadas ao container PHP:
-
-DB_HOST=db  
-DB_USER=colabore  
-DB_PASSWORD=colabore123  
-DB_NAME=colabore_sabara  
-
-Exemplo de conexao.php:
-
-<?php
-$host = getenv('DB_HOST');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASSWORD');
-$db   = getenv('DB_NAME');
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
-?>
-
-
 ===============================
