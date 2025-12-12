@@ -31,6 +31,8 @@ Tecnologias Utilizadas
 
 
 Estrutura do Projeto
+
+
 <img width="293" height="629" alt="{C970D19B-8A69-440E-8CF0-0A22A1EEC7B7}" src="https://github.com/user-attachments/assets/a88a3c31-380f-42cd-8fbb-a184da3d4a09" />
 
 
