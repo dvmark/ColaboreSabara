@@ -8,7 +8,6 @@ Table
 - Estrutura do Projeto
 - Pré-requisitos
 - Como Executar com Docker
-- Configuração do Banco de Dados MySQL
 
 
 Introdução
